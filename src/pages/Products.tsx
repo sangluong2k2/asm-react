@@ -1,5 +1,6 @@
 import React from "react";
-import { ProductType } from "./types/product";
+import { Link } from "react-router-dom";
+import { ProductType } from "../types/product";
 
 type ProductsProps = {
     products: ProductType[];
@@ -14,9 +15,9 @@ const Products = (props: ProductsProps) => {
             <table>
                 <thead>
                     <tr>
-                        <th>aaa</th>
-                        <th></th>
-                        <th></th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
                         <th></th>
                     </tr>
                     
@@ -27,7 +28,12 @@ const Products = (props: ProductsProps) => {
                              <td>{index + 1 }</td>
                              <td>{product.name}</td>
                              <td>{product.price}</td>
-                             <td><button onClick={() => props.onRemove(product.id)}>remove</button></td>
+                             <td>
+                                
+                                <Link className="text-red-600" to={`/admin/products/${product.id}/edit`} >Edit</Link>
+                                
+                                <button onClick={() => props.onRemove(product.id)}>remove</button>
+                             </td>
                          </tr>
                     })}
                 </tbody>
