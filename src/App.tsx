@@ -14,6 +14,8 @@ import { ProductType } from './types/product'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./dashboard.css";
+import Signup from './pages/Signup'
+import Signin from './pages/Signin'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -32,21 +34,22 @@ function App() {
     setProducts([...products, data]);
   }
 
-  const onHandleRemove = (id: number) => {
-    remove(id);
-    setProducts(products.filter(item => item.id !== id))
+  const onHandleRemove = (_id: number) => {
+    remove(_id);
+    setProducts(products.filter(item => item._id !== _id))
   }
 
   const onHandleUpdate = async (product: ProductType) => {
     const { data } = await update(product);
-    setProducts(products.map(item => item.id == data.id ? data : item))
+    setProducts(products.map(item => item._id == data.id ? data : item))
   }
   return (
 
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage products={products}/>} />
         <Route path="/products" element={<h1>Product page</h1>} />
+        <Route path="/help" element={<h1>Hỗ trợ</h1>} />
 
 
 
@@ -54,11 +57,14 @@ function App() {
           <Route index element={<Navigate to="dashboard" />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='products'>
-            <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             <Route index element={<Products products={products} onRemove={onHandleRemove} />} />
+            <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             <Route path=':id/edit' element={<ProductEdit onUpdate={onHandleUpdate} />} />
           </Route>
         </Route>
+
+        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/signin' element={<Signin/>}/>
       </Routes>
     </div>
   )
