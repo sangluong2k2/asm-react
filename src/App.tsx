@@ -16,6 +16,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./dashboard.css";
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+import ProductDetail from './pages/ProductDetail'
+import ProductsPage from './pages/layouts/ProductsPage'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -48,8 +50,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage products={products}/>} />
-        <Route path="/products" element={<h1>Product page</h1>} />
+        <Route path="/products" element={<ProductsPage products={products}/>} />
         <Route path="/help" element={<h1>Hỗ trợ</h1>} />
+
+        <Route path='/products/:id' element={<ProductDetail/>}/>
 
 
 

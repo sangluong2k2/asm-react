@@ -19,7 +19,7 @@ const Header = (props: Props) => {
                         </ul>
                     </div>
                     <div >
-                        <ul className="grid grid-cols-4 gap-1">
+                        <ul className="grid grid-cols-4 gap-2">
                             <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/signin">Sign in</NavLink></li>
                             <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/signup">Sign up</NavLink></li>
                         </ul>
