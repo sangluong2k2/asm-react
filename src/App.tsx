@@ -11,17 +11,28 @@ import ProductEdit from './pages/ProductEdit'
 import Products from './pages/Products'
 
 import { ProductType } from './types/product'
+import { TypeCategory } from './types/category'
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
+
 import "./dashboard.css";
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import ProductDetail from './pages/ProductDetail'
 import ProductsPage from './pages/layouts/ProductsPage'
+import { addcate, getall, removecate, updatecate } from './api/category'
+import Categories from './pages/Categories'
+import CategoryAdd from './pages/CategoryAdd'
+import CategoryEdit from './pages/CategoryEdit'
+
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
+  const [categories, setCategories] = useState<TypeCategory[]>([])
 
+  //Product
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
@@ -37,13 +48,48 @@ function App() {
   }
 
   const onHandleRemove = (_id: number) => {
-    remove(_id);
-    setProducts(products.filter(item => item._id !== _id))
+    try {
+      remove(_id);
+      toastr.success("Xóa thành công")
+      setProducts(products.filter(item => item._id !== _id))
+    } catch (error) {
+      toastr.error("Xóa không thành công")
+    }
+    
   }
 
   const onHandleUpdate = async (product: ProductType) => {
     const { data } = await update(product);
     setProducts(products.map(item => item._id == data.id ? data : item))
+  }
+
+  //Categories 
+  useEffect(() => {
+    const getCategories = async () => {
+      const {data} = await getall();
+      setCategories(data); 
+    }
+    getCategories();
+  }, [])
+
+  const onAddCate = async (category: TypeCategory) => {
+    const {data} = await addcate(category);
+    setCategories([...categories, data]);
+  }
+
+  const onRemoveCate = async (_id: number) => {
+    try {
+      removecate(_id);
+      toastr.success("Xóa thành công")
+      setCategories(categories.filter(item => item._id !== _id))
+    } catch (error) {
+      toastr.error("Xóa không thành công")
+    }
+  }
+
+  const onUpdateCate = async (editCategory: TypeCategory) => {
+    const {data} = await updatecate(editCategory)
+    setCategories(categories.map(item => item._id == data._id ? data : item))
   }
   return (
 
@@ -64,6 +110,12 @@ function App() {
             <Route index element={<Products products={products} onRemove={onHandleRemove} />} />
             <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             <Route path=':id/edit' element={<ProductEdit onUpdate={onHandleUpdate} />} />
+          </Route>
+
+          <Route path='categories'>
+            <Route index element={<Categories categories={categories} onRemoveCate={onRemoveCate} />} />
+            <Route path="add" element={<CategoryAdd onAddCate={onAddCate} />} />
+            <Route path=':id/edit' element={<CategoryEdit onUpdateCate={onUpdateCate} />} />
           </Route>
         </Route>
 

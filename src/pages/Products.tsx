@@ -22,6 +22,12 @@ const Products = (props: ProductsProps) => {
                     </th>
                     <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                         <div className="flex items-center justify-center">
+                            Image
+                            
+                        </div>
+                    </th>
+                    <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <div className="flex items-center justify-center">
                             Name
                             
                         </div>
@@ -32,6 +38,7 @@ const Products = (props: ProductsProps) => {
                             
                         </div>
                     </th>
+                    
                    
                     <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                         <div className="flex items-center justify-center">
@@ -46,6 +53,7 @@ const Products = (props: ProductsProps) => {
                          return  <tr className="bg-gray-100 text-center border-b text-sm text-gray-600" key={index}>
                         
                          <td className="p-2 border-r">{index+1}</td>
+                         <td className="p-2 border-r"><img className="mx-auto" src={`${product.image}`} width={50} alt="" /></td>
                          <td className="p-2 border-r">{product.name}</td>
                          <td className="p-2 border-r">{product.price}</td>
                          

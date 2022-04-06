@@ -33,7 +33,7 @@ const HomePage = (props: ProductsProps) => {
                                 <Link className="no-underline " to={`/products/${product._id}`}>
                                     <div className="group">
                                         <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                                            <img className="w-full h-full object-center object-cover lg:w-full lg:h-full" src="https://vanhoadoanhnghiepvn.vn/wp-content/uploads/2020/08/112815953-stock-vector-no-image-available-icon-flat-vector.jpg" alt="" />
+                                            <img className="w-full h-full object-center object-cover lg:w-full lg:h-full" src={`${product.image}`} alt="" />
                                         </div>
                                         <div className="mt-4 flex justify-between">
                                             <div>
