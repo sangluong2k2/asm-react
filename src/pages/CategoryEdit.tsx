@@ -35,7 +35,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
         try {
             props.onUpdateCate(data);
             toastr.success("Sửa danh mục thành công")
-            navigate('/admin/products');
+            navigate('/admin/categories');
         } catch (error) {
             toastr.error("Sửa danh mục không thành công")
         }

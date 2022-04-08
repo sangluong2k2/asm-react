@@ -1,11 +1,14 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { signup } from '../api/auth';
+import toastr from 'toastr'
+import "toastr/build/toastr.min.css"
 
 type TypeInputs = {
     name: string,
     email: string,
-    password: string
+    password: string,
+    role: number
 }
 
 const Signup = () => {
@@ -13,8 +16,14 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<TypeInputs> = data => {
-        signup(data);
-        navigate("/signin");
+        try {
+            signup(data);
+            toastr.success("Đăng ký thành công")
+            navigate("/signin");
+        } catch (error) {
+            toastr.error("Đăng ký không thành công")
+        }
+        
     }
     return (
         <div className='w-full max-w-xs mx-auto mt-[100px]'>
@@ -40,6 +49,9 @@ const Signup = () => {
                     </label>
                     <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' type="password" placeholder='Mật khẩu' {...register('password')} />
                     <p className="text-red-500 text-xs italic">Please choose a password.</p>
+                </div>
+                <div className='mb-4'>
+                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' type="hidden" value={`1`} {...register('role')} />
                 </div>
                 <div className='flex items-center justify-between'>
                     <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Đăng ký</button>

@@ -83,7 +83,7 @@ const ProductEdit = (props: ProductEditProps) => {
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                     Loại danh mục
                 </label>
-                <select id="" {...register('category')}className="shadow appearance-none border rounded w-[10%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+                <select id="" className="shadow appearance-none border rounded w-[15%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
                     {category.map((item) => {
                         return <option value={`${item._id}`}>{item.name}</option>
                     })}

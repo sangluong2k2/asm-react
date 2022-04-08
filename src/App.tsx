@@ -26,11 +26,16 @@ import { addcate, getall, removecate, updatecate } from './api/category'
 import Categories from './pages/Categories'
 import CategoryAdd from './pages/CategoryAdd'
 import CategoryEdit from './pages/CategoryEdit'
+import Users from './pages/Users'
+import { editUser, listUser } from './api/auth'
+import { User } from './types/User'
+import CategoriesPage from './pages/layouts/CategoriesPage'
 
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
   const [categories, setCategories] = useState<TypeCategory[]>([])
+  const [users, setUsers] = useState<User[]>([])
 
   //Product
   useEffect(() => {
@@ -91,6 +96,19 @@ function App() {
     const {data} = await updatecate(editCategory)
     setCategories(categories.map(item => item._id == data._id ? data : item))
   }
+
+  //User
+  useEffect(() => {
+    const getUsers = async () => {
+      const {data} = await listUser();
+      setUsers(data)
+    }
+    getUsers();
+  },[])
+
+  // const onEditUser = async (user: User) => {
+  //   const {data : newuser} = await editUser()
+  // }
   return (
 
     <div className="App">
@@ -98,9 +116,8 @@ function App() {
         <Route path="/" element={<HomePage products={products}/>} />
         <Route path="/products" element={<ProductsPage products={products}/>} />
         <Route path="/help" element={<h1>Hỗ trợ</h1>} />
-
         <Route path='/products/:id' element={<ProductDetail/>}/>
-
+        <Route path='/category/:slug' element={<CategoriesPage/> }/>
 
 
         <Route path="admin" element={<AdminLayout />}>
@@ -117,6 +134,13 @@ function App() {
             <Route path="add" element={<CategoryAdd onAddCate={onAddCate} />} />
             <Route path=':id/edit' element={<CategoryEdit onUpdateCate={onUpdateCate} />} />
           </Route>
+
+          {/* <Route path='users'>
+            <Route index element={<Users users={users} onRemoveCate={onRemoveCate} />} />
+            <Route path="add" element={<CategoryAdd onAddCate={onAddCate} />} />
+            <Route path=':id/edit' element={<CategoryEdit onUpdateCate={onUpdateCate} />} />
+          </Route> */}
+          
         </Route>
 
         <Route path='/signup' element={<Signup/>}/>

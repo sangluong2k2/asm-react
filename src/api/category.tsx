@@ -12,7 +12,7 @@ export const get = (_id:string | undefined) => {
 }
 
 export const read = (slug: string | undefined) => {
-    const url = `/categories/${slug}`
+    const url = `/category/${slug}`
     return instance.get(url)
 }
 
