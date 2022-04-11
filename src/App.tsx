@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { add, list, remove, update } from './api/product'
+
 
 import Dashboard from './pages/Dashboard'
 import AdminLayout from './pages/layouts/AdminLayout'
@@ -12,6 +12,7 @@ import Products from './pages/Products'
 
 import { ProductType } from './types/product'
 import { TypeCategory } from './types/category'
+import { User } from './types/User'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import toastr from 'toastr'
@@ -20,16 +21,22 @@ import 'toastr/build/toastr.min.css'
 import "./dashboard.css";
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+
+import { add, list, remove, update } from './api/product'
 import ProductDetail from './pages/ProductDetail'
 import ProductsPage from './pages/layouts/ProductsPage'
+
 import { addcate, getall, removecate, updatecate } from './api/category'
 import Categories from './pages/Categories'
 import CategoryAdd from './pages/CategoryAdd'
 import CategoryEdit from './pages/CategoryEdit'
-import Users from './pages/Users'
-import { editUser, listUser } from './api/auth'
-import { User } from './types/User'
 import CategoriesPage from './pages/layouts/CategoriesPage'
+
+import Users from './pages/Users'
+import { editUser, listUser, removeUser } from './api/auth'
+
+import CartPage from './pages/layouts/CartPage'
+import UserEdit from './pages/UserEdit'
 
 
 function App() {
@@ -106,9 +113,20 @@ function App() {
     getUsers();
   },[])
 
-  // const onEditUser = async (user: User) => {
-  //   const {data : newuser} = await editUser()
-  // }
+  const onEditUser = async (user: User) => {
+    const {data : newuser} = await editUser(user)
+    setUsers(users.map(item => item._id == newuser._id ? newuser : item))
+  }
+
+  const onRemoveUser = async (_id: number) => {
+    try {
+      removeUser(_id);
+      toastr.success("Xóa thành công")
+      setUsers(users.filter(item => item._id !== _id))
+    } catch (error) {
+      toastr.error("Xóa không thành công")
+    }
+  }
   return (
 
     <div className="App">
@@ -118,6 +136,7 @@ function App() {
         <Route path="/help" element={<h1>Hỗ trợ</h1>} />
         <Route path='/products/:id' element={<ProductDetail/>}/>
         <Route path='/category/:slug' element={<CategoriesPage/> }/>
+        <Route path='/cart' element={<CartPage/>}/>
 
 
         <Route path="admin" element={<AdminLayout />}>
@@ -135,11 +154,10 @@ function App() {
             <Route path=':id/edit' element={<CategoryEdit onUpdateCate={onUpdateCate} />} />
           </Route>
 
-          {/* <Route path='users'>
-            <Route index element={<Users users={users} onRemoveCate={onRemoveCate} />} />
-            <Route path="add" element={<CategoryAdd onAddCate={onAddCate} />} />
-            <Route path=':id/edit' element={<CategoryEdit onUpdateCate={onUpdateCate} />} />
-          </Route> */}
+          <Route path='users'>
+            <Route index element={<Users users={users} onRemoveUser={onRemoveUser}  />} />
+            <Route path=':id/edit' element={<UserEdit editUser={onEditUser} />} />
+          </Route>
           
         </Route>
 
