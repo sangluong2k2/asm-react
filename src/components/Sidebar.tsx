@@ -23,6 +23,11 @@ const Sidebar = (props: Props) => {
                 Categories
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active" aria-current="page" to="/admin/users">
+                Users
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>

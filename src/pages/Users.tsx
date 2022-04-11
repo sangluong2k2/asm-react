@@ -58,7 +58,7 @@ const Users = (props: UsersProps) => {
                          <td className="p-2 border-r">{user.email}</td>
                          <td className="p-2 border-r">{user.role}</td>
                          <td>
-                             <Link className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" to={`/admin/user/${user._id}/edit`}>Edit</Link>
+                             <Link className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" to={`/admin/users/${user._id}/edit`}>Edit</Link>
                              <button className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin" onClick={() => props.onRemove(user._id)}>remove</button>
                          </td>
                      </tr>          
@@ -67,9 +67,6 @@ const Users = (props: UsersProps) => {
                 
             </tbody>
         </table>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-4">
-            <Link  className="text-white no-underline" to={`/admin/products/add`}>Thêm sản phẩm</Link>
-        </button>
 
     </div>
     )

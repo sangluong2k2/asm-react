@@ -14,19 +14,16 @@ const Header = (props: Props) => {
                 </div>
                 <div>
                     <ul className="flex">
-                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/">Trang chủ</NavLink></li>
-                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/products">Sản phẩm</NavLink></li>
-                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/help">Hỗ trợ</NavLink></li>
+                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black hover:underline " to="/">Trang chủ</NavLink></li>
+                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black hover:underline " to="/products">Sản phẩm</NavLink></li>
+                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black hover:underline " to="/help">Hỗ trợ</NavLink></li>
 
                     </ul>
                 </div>
                 <div>
+                    
                     {isAuthenticate()}
                        {check}
-                    {/* <ul className="grid grid-cols-4 gap-2">
-                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/signin">Sign in</NavLink></li>
-                        <li className="mx-[10px] text-[20px] mt-[30px]"><NavLink className="no-underline text-black " to="/signup">Sign up</NavLink></li>
-                    </ul> */}
                 </div>
             </div>
         </header>

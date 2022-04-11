@@ -37,7 +37,7 @@ const HomePage = (props: ProductsProps) => {
                         <div className="flex mx-auto w-[50%]">
                             {categories.map((item, index) => {
                                 return <div key={index}>
-                                    <NavLink to={`/category/${item.slug}`} className="no-underline border-[#8ba5fa] border py-[5px] px-[50px] text-blue-400 hover:text-black hover:bg-blue-200 text-[20px] mt-[20px]">{item.name}</NavLink>
+                                    <NavLink to={`/category/${item.slug}`} className="no-underline  border-[#16b8ba] border py-[5px] px-[50px] text-[#16b8ba] hover:text-white hover:bg-[#119ea0] text-[20px] mt-[20px] mx-[5px]">{item.name}</NavLink>
                                 </div>
                             })} 
                         </div>
@@ -55,8 +55,8 @@ const HomePage = (props: ProductsProps) => {
                                         </div>
                                         <div className="mt-4 flex justify-between">
                                             <div>
-                                                <h3 className="text-sm text-gray-700 no-underline ">
-                                                    <Link to="" className="">
+                                                <h3 className="text-sm  ">
+                                                    <Link to="" className="text-[#16b8ba] no-underline">
                                                         <span aria-hidden="true" className=" inset-0"></span>
                                                         {product.name}
                                                     </Link>
