@@ -94,12 +94,22 @@ const ProductEdit = (props: ProductEditProps) => {
                     Tên sản phẩm
                 </label>
                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Tên sản phẩm" {...register('name', { required: true })} />
+                {Object.keys(errors).length !== 0 && (
+                        <div>
+                            {errors.name?.type === "required" && <p className='text-red-600'>Tên sản phẩm không được bỏ trống</p>}
+                        </div>
+                    )}
             </div>
             <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                     Giá sản phẩm
                 </label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" placeholder="Giá sản phẩm" {...register('price')} />
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" placeholder="Giá sản phẩm" {...register('price', { required: true })} />
+                {Object.keys(errors).length !== 0 && (
+                        <div>
+                            {errors.price?.type === "required" && <p className='text-red-600'>Giá sản phẩm không được bỏ trống</p>}
+                        </div>
+                    )}
             </div>
             <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2">

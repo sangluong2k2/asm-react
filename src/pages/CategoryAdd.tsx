@@ -33,7 +33,12 @@ const CategoryAdd = (props: CategoryAddProps) => {
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                     Tên danh mục
                 </label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Tên danh mục" {...register('name', {required: true})} />
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Tên danh mục" {...register('name', {required: true, minLength: 6})} />
+                {Object.keys(errors).length !== 0 && (
+                        <div>
+                            {errors.name?.type === "required" && <p className='text-red-600'>Tên sản phẩm không được bỏ trống</p>}
+                        </div>
+                    )}
             </div>
            
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Thêm</button>
