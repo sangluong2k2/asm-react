@@ -14,7 +14,7 @@ export const isAuthenticate = () => {
     if (localStorage.getItem('user')) {
         return <div className="grid grid-cols-3 gap-1 relative" >
             <button className="bg-[#16b8ba] hover:bg-[#119ea0]  font-bold py-2 px-4 border border-[#119ea0] rounded px-[10px] text-[16px] mt-[30px] absolute right-0">
-                <Link className={"text-[#484849] no-underline hover:text-[#484849]"} to={'/'} onClick={() => { localStorage.removeItem('user'); setuser(1) }}>Đăng xuất</Link>
+                <Link className={"text-white no-underline "} to={'/'} onClick={() => { localStorage.removeItem('user'); setuser(1) }}>Đăng xuất</Link>
             </button>
 
         </div>
@@ -22,11 +22,11 @@ export const isAuthenticate = () => {
         return <div className="relative" >
             <div className="grid grid-cols-2 gap-4 absolute right-0 ">
                 <button className="bg-[#16b8ba] hover:bg-[#119ea0]  font-bold py-2 px-4 border border-[#119ea0] rounded px-[10px] text-[16px] mt-[30px] ">
-                    <Link className={"text-[#484849] no-underline hover:text-white "} to={'/signup'} >Đăng ký</Link>
+                    <Link className={"text-white no-underline  "} to={'/signup'} >Đăng ký</Link>
                 </button>
 
                 <button className="bg-[#16b8ba] hover:bg-[#119ea0]  font-bold py-2 px-4 border border-[#119ea0] rounded px-[10px] text-[16px] mt-[30px] ">
-                    <Link className={"text-[#484849] no-underline hover:text-white"} to={'/signin'} >Đăng nhập</Link>
+                    <Link className={"text-white no-underline "} to={'/signin'} >Đăng nhập</Link>
                 </button>
 
             </div>
@@ -54,4 +54,8 @@ export const check = () => {
             ""
         }
     }
+}
+
+function setuser(arg0: number) {
+    throw new Error("Function not implemented.");
 }

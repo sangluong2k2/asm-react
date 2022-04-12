@@ -37,12 +37,18 @@ import { editUser, listUser, removeUser } from './api/auth'
 
 import CartPage from './pages/layouts/CartPage'
 import UserEdit from './pages/UserEdit'
+import { TypeCart } from './types/cart'
 
 
 function App() {
+  type TypeForm = {
+    quantity: number
+    // image: string
+}
   const [products, setProducts] = useState<ProductType[]>([])
   const [categories, setCategories] = useState<TypeCategory[]>([])
   const [users, setUsers] = useState<User[]>([])
+  const [carts, setCarts] = useState<TypeCart[]>([])
 
   //Product
   useEffect(() => {
@@ -127,6 +133,16 @@ function App() {
       toastr.error("Xóa không thành công")
     }
   }
+
+  //Cart
+  const addCart = async (productCart : TypeCart) => {
+    const addcart = async () => {
+      const {data} = await addCart(productCart)
+      console.log(data);
+      setCarts([...carts, data])
+    }
+    addcart()
+  }
   return (
 
     <div className="App">
@@ -134,7 +150,7 @@ function App() {
         <Route path="/" element={<HomePage products={products}/>} />
         <Route path="/products" element={<ProductsPage products={products}/>} />
         <Route path="/help" element={<h1>Hỗ trợ</h1>} />
-        <Route path='/products/:id' element={<ProductDetail/>}/>
+        <Route path='/products/:id' element={<ProductDetail onAddCart={addCart} />}/>
         <Route path='/category/:slug' element={<CategoriesPage/> }/>
         <Route path='/cart' element={<CartPage/>}/>
 
