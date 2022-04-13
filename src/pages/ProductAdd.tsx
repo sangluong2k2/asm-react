@@ -7,6 +7,7 @@ import 'toastr/build/toastr.min.css'
 import { TypeCategory } from "../types/category";
 import { getall } from "../api/category"
 import axios from "axios";
+import {Button, message} from 'antd'
 
 type ProductAddProps = {
     onAdd: (Product: ProductType) => void
@@ -17,6 +18,14 @@ type FormInputs = {
     image: string,
     category: string
 }
+
+const key = 'updatable';
+const openMessage = () => {
+    message.loading({ content: 'Đang thêm sản phẩm...', key });
+    setTimeout(() => {
+      message.success({ content: 'Thành công!', key, duration: 2 });
+    }, 1000);
+  };
 const ProductAdd = (props: ProductAddProps) => {
     const [category, setCategory] = useState<TypeCategory[]>([])
     const {register, handleSubmit, formState: {errors}} = useForm<FormInputs>();

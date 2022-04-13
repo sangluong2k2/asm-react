@@ -35,17 +35,17 @@ const CategoriesPage = (props: Props) => {
             <div>
                 <Header />
             </div>
-            <nav className="w-full pt-[150px] ">
+            <nav className="w-full  ">
                 <img src="https://shop.mixigaming.com/wp-content/uploads/2022/01/MixiShop2022.png" alt="" />
             </nav>
             <article className="w-[1300px] mx-auto my-[50px] ">
                 <div className="">
                     <div className="text-center">
-                        <h1 className="text-center">Sản phẩm bán chạy</h1>
-                        <div className="flex mx-auto w-[50%]">
+                        
+                        <div className="flex mx-auto w-[50%] ">
                             {categories.map((item, index) => {
                                 return <div key={index}>
-                                    <NavLink to={`/category/${item.slug}`} className="no-underline border py-[5px] px-[50px] text-blue-400 hover:text-black hover:bg-blue-200 text-[20px] mt-[20px]">{item.name}</NavLink>
+                                    <NavLink to={`/category/${item.slug}`} className="no-underline border py-[5px] px-[50px] text-blue-400 hover:text-black hover:bg-blue-200 text-[20px] mt-[20px] mx-[5px]">{item.name}</NavLink>
                                 </div>
                             })} 
                         </div>
