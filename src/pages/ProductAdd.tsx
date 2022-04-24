@@ -19,13 +19,6 @@ type FormInputs = {
     category: string
 }
 
-const key = 'updatable';
-const openMessage = () => {
-    message.loading({ content: 'Đang thêm sản phẩm...', key });
-    setTimeout(() => {
-      message.success({ content: 'Thành công!', key, duration: 2 });
-    }, 1000);
-  };
 const ProductAdd = (props: ProductAddProps) => {
     const [category, setCategory] = useState<TypeCategory[]>([])
     const {register, handleSubmit, formState: {errors}} = useForm<FormInputs>();

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ProductType } from "../types/product";
 
 type ProductsProps = {
-    products: ProductType[];
+    product: ProductType[];
     onRemove: (id: number) => void
 };
 
@@ -49,7 +49,7 @@ const Products = (props: ProductsProps) => {
                 </tr>
             </thead>
             <tbody>
-                {props.products?.map((product, index) => {
+                {props.product.map((product, index) => {
                          return  <tr className="bg-gray-100 text-center border-b text-sm text-gray-600" key={index}>
                         
                          <td className="p-2 border-r">{index+1}</td>

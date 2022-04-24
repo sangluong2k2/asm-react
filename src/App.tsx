@@ -135,14 +135,7 @@ function App() {
   }
 
   //Cart
-  const addCart = async (productCart : TypeCart) => {
-    const addcart = async () => {
-      const {data} = await addCart(productCart)
-      console.log(data);
-      setCarts([...carts, data])
-    }
-    addcart()
-  }
+  
   return (
 
     <div className="App">
