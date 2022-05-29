@@ -42,7 +42,7 @@ const Categories = (props: CategoriesProps) => {
                      <td className="p-2 border-r">{category.name}</td>
                      <td>
                          <Link className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" to={`/admin/categories/${category._id}/edit`}>Edit</Link>
-                         <button className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin" onClick={() => props.onRemoveCate(category._id)}>remove</button>
+                         <button className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin" onClick={() => props.onRemoveCate(category._id!)}>remove</button>
                      </td>
                  </tr>          
                 })}

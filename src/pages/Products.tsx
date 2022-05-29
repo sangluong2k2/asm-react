@@ -59,7 +59,7 @@ const Products = (props: ProductsProps) => {
                          
                          <td>
                              <Link className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" to={`/admin/products/${product._id}/edit`}>Edit</Link>
-                             <button className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin" onClick={() => props.onRemove(product._id)}>remove</button>
+                             <button className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin" onClick={() => props.onRemove(product._id!)}>remove</button>
                          </td>
                      </tr>          
                     })}
