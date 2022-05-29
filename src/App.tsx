@@ -134,8 +134,7 @@ function App() {
     }
   }
 
-  //Cart
-  
+
   return (
 
     <div className="App">
@@ -143,7 +142,7 @@ function App() {
         <Route path="/" element={<HomePage products={products}/>} />
         <Route path="/products" element={<ProductsPage products={products}/>} />
         <Route path="/help" element={<h1>Hỗ trợ</h1>} />
-        <Route path='/products/:id' element={<ProductDetail onAddCart={addCart} />}/>
+        <Route path='/products/:id' element={<ProductDetail />}/>
         <Route path='/category/:slug' element={<CategoriesPage/> }/>
         <Route path='/cart' element={<CartPage/>}/>
 
@@ -152,7 +151,7 @@ function App() {
           <Route index element={<Navigate to="dashboard" />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='products'>
-            <Route index element={<Products products={products} onRemove={onHandleRemove} />} />
+            <Route index element={<Products product={products} onRemove={onHandleRemove} />} />
             <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             <Route path=':id/edit' element={<ProductEdit onUpdate={onHandleUpdate} />} />
           </Route>

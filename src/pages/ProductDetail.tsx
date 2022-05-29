@@ -10,7 +10,7 @@ import { User } from '../types/User';
 import styles from './OtherNumberFormat.module.scss'
 
 type Props = {
-    onAddCart: (productCart: TypeForm) => void
+   
 }
 type TypeForm = {
     quantity: number
@@ -41,22 +41,9 @@ const ProductDetail = (props: Props) => {
         getUser()
     }, [])
 
-    const onSubmit: SubmitHandler<TypeForm> = data => {
-        try {
-            const newObject = {
-                ...data,
-                name: product?.name,
-                user: user?._id,
-                image: product?.image,
-                price: product?.price
-            };
-            props.onAddCart(newObject)
-            toastr.success("Thêm giỏ hàng thành công")
 
-        } catch (error) {
-            toastr.error("Bạn chưa đăng nhập")
-        }
-    }
+
+
     return (
         <div>
             <div>
@@ -106,7 +93,7 @@ const ProductDetail = (props: Props) => {
                                     </a>
                                 </span>
                             </div>
-                            <form action="" onSubmit={handleSubmit(onSubmit)}>
+                            <form action="">
                                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
 
                                     <div className="flex ml-6 items-center">
