@@ -124,15 +124,6 @@ function App() {
     setUsers(users.map(item => item._id == newuser._id ? newuser : item))
   }
 
-  const onRemoveUser = async (_id: number) => {
-    try {
-      removeUser(_id);
-      toastr.success("Xóa thành công")
-      setUsers(users.filter(item => item._id !== _id))
-    } catch (error) {
-      toastr.error("Xóa không thành công")
-    }
-  }
 
 
   return (
@@ -163,7 +154,7 @@ function App() {
           </Route>
 
           <Route path='users'>
-            <Route index element={<Users users={users} onRemoveUser={onRemoveUser}  />} />
+            <Route index element={<Users users={users}  />} />
             <Route path=':id/edit' element={<UserEdit editUser={onEditUser} />} />
           </Route>
           

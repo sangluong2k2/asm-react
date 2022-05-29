@@ -4,7 +4,6 @@ import { User } from "../types/User";
 
 type UsersProps = {
     users: User[];
-    onRemove: (id: number) => void
 };
 
 const Users = (props: UsersProps) => {
@@ -59,7 +58,7 @@ const Users = (props: UsersProps) => {
                          <td className="p-2 border-r">{user.role}</td>
                          <td>
                              <Link className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" to={`/admin/users/${user._id}/edit`}>Edit</Link>
-                             <button className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin" onClick={() => props.onRemove(user._id)}>remove</button>
+                             
                          </td>
                      </tr>          
                     })}
