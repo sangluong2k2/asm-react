@@ -1,6 +1,6 @@
-// import React from 'react'
-// import { Navigate } from 'react-router-dom';
-// import { isAuthenticate } from '../utils/localStorage';
+import React from 'react'
+import { Navigate } from 'react-router-dom';
+import { isAuthenticate } from '../utils/localStorage';
 
 
 // type PrivateRouterProps = {
