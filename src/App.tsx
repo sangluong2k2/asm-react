@@ -37,7 +37,7 @@ import { editUser, listUser, removeUser } from './api/auth'
 
 import CartPage from './pages/layouts/CartPage'
 import UserEdit from './pages/UserEdit'
-import { TypeCart } from './types/cart'
+
 
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
   const [products, setProducts] = useState<ProductType[]>([])
   const [categories, setCategories] = useState<TypeCategory[]>([])
   const [users, setUsers] = useState<User[]>([])
-  const [carts, setCarts] = useState<TypeCart[]>([])
+  
 
   //Product
   useEffect(() => {
